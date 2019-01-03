@@ -3,12 +3,6 @@
 This project hosts samples for the
 [Google IMA tvOS Client-Side SDK](https://developers.google.com/interactive-media-ads/docs/sdks/tvos-client-side/).
 
-### Downloads
-
-Check out the
-[releases section](https://github.com/googleads/googleads-ima-tvos-client-side/releases)
-for downloadable zips of the source.
-
 ### Announcements and Updates
 
 For IMA SDK updates and news, please follow our
