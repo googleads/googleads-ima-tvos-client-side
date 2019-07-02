@@ -1,5 +1,5 @@
 /**
- * Copyright 2018 Google LLC
+ * Copyright 2019 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,8 @@
 #import "ViewController.h"
 
 #import <AVKit/AVKit.h>
-#import <ClientSideInteractiveMediaAds/ClientSideInteractiveMediaAds.h>
+
+#import <GoogleInteractiveMediaAds/GoogleInteractiveMediaAds.h>
 
 NSString *const kContentURLString =
     @"https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_fmp4/"
@@ -93,8 +94,10 @@ NSString *const kAdTagURLString = @"https://pubads.g.doubleclick.net/gampad/ads?
 
 - (void)requestAds {
   // Pass the main view as the container for ad display.
+  IMAAdDisplayContainer *adDisplayContainer =
+      [[IMAAdDisplayContainer alloc] initWithAdContainer:self.view];
   IMAAdsRequest *request = [[IMAAdsRequest alloc] initWithAdTagUrl:kAdTagURLString
-                                                adDisplayContainer:self.view
+                                                adDisplayContainer:adDisplayContainer
                                                    contentPlayhead:self.contentPlayhead
                                                        userContext:nil];
   [self.adsLoader requestAdsWithRequest:request];
@@ -109,7 +112,7 @@ NSString *const kAdTagURLString = @"https://pubads.g.doubleclick.net/gampad/ads?
   [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-#pragma mark IMAAdsLoaderDelegate
+#pragma mark - IMAAdsLoaderDelegate
 
 - (void)adsLoader:(IMAAdsLoader *)loader adsLoadedWithData:(IMAAdsLoadedData *)adsLoadedData {
   // Initialize and listen to the ads manager loaded for this request.
@@ -124,7 +127,7 @@ NSString *const kAdTagURLString = @"https://pubads.g.doubleclick.net/gampad/ads?
   [self.contentPlayerViewController.player play];
 }
 
-#pragma mark IMAAdsManagerDelegate
+#pragma mark - IMAAdsManagerDelegate
 
 - (void)adsManager:(IMAAdsManager *)adsManager didReceiveAdEvent:(IMAAdEvent *)event {
   // Play each ad once it has loaded.
