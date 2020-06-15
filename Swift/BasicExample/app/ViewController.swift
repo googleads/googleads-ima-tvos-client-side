@@ -18,8 +18,10 @@ import GoogleInteractiveMediaAds
 import UIKit
 
 class ViewController: UIViewController, IMAAdsLoaderDelegate, IMAAdsManagerDelegate {
-  static let ContentURLString = "https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_fmp4/master.m3u8" //NOLINT
-  static let AdTagURLString = "https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dlinear&correlator=" //NOLINT
+  static let ContentURLString =
+    "https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_fmp4/master.m3u8"  //NOLINT
+  static let AdTagURLString =
+    "https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dlinear&correlator="  //NOLINT
 
   var adsLoader: IMAAdsLoader!
   var adsManager: IMAAdsManager!
@@ -32,19 +34,19 @@ class ViewController: UIViewController, IMAAdsLoaderDelegate, IMAAdsManagerDeleg
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.view.backgroundColor = UIColor.black;
+    self.view.backgroundColor = UIColor.black
     setUpContentPlayer()
     setUpAdsLoader()
   }
 
   override func viewDidAppear(_ animated: Bool) {
-    super.viewDidAppear(animated);
+    super.viewDidAppear(animated)
     requestAds()
   }
 
   func setUpContentPlayer() {
     // Load AVPlayer with path to our content.
-    let contentURL! = URL(string: ViewController.ContentURLString)
+    let contentURL = URL(string: ViewController.ContentURLString)!
     let player = AVPlayer(url: contentURL)
     playerViewController = AVPlayerViewController()
     playerViewController.player = player
@@ -55,7 +57,7 @@ class ViewController: UIViewController, IMAAdsLoaderDelegate, IMAAdsManagerDeleg
       self,
       selector: #selector(ViewController.contentDidFinishPlaying(_:)),
       name: NSNotification.Name.AVPlayerItemDidPlayToEndTime,
-      object: player.currentItem);
+      object: player.currentItem)
 
     showContentPlayer()
   }
@@ -64,13 +66,13 @@ class ViewController: UIViewController, IMAAdsLoaderDelegate, IMAAdsManagerDeleg
     self.addChild(playerViewController)
     playerViewController.view.frame = self.view.bounds
     self.view.insertSubview(playerViewController.view, at: 0)
-    playerViewController.didMove(toParent:self)
+    playerViewController.didMove(toParent: self)
   }
 
   func hideContentPlayer() {
     // The whole controller needs to be detached so that it doesn't capture resume
     // events from the remote and play content underneath the ad.
-    playerViewController.willMove(toParent:nil)
+    playerViewController.willMove(toParent: nil)
     playerViewController.view.removeFromSuperview()
     playerViewController.removeFromParent()
   }
@@ -85,10 +87,10 @@ class ViewController: UIViewController, IMAAdsLoaderDelegate, IMAAdsManagerDeleg
     let adDisplayContainer = IMAAdDisplayContainer(adContainer: self.view)
     // Create an ad request with our ad tag, display container, and optional user context.
     let request = IMAAdsRequest(
-        adTagUrl: ViewController.AdTagURLString,
-        adDisplayContainer: adDisplayContainer,
-        contentPlayhead: contentPlayhead,
-        userContext: nil)
+      adTagUrl: ViewController.AdTagURLString,
+      adDisplayContainer: adDisplayContainer,
+      contentPlayhead: contentPlayhead,
+      userContext: nil)
 
     adsLoader.requestAds(with: request)
   }
