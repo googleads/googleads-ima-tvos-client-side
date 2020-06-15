@@ -95,7 +95,7 @@ NSString *const kAdTagURLString = @"https://pubads.g.doubleclick.net/gampad/ads?
 - (void)requestAds {
   // Pass the main view as the container for ad display.
   IMAAdDisplayContainer *adDisplayContainer =
-      [[IMAAdDisplayContainer alloc] initWithAdContainer:self.view];
+      [[IMAAdDisplayContainer alloc] initWithAdContainer:self.view viewController:self];
   IMAAdsRequest *request = [[IMAAdsRequest alloc] initWithAdTagUrl:kAdTagURLString
                                                 adDisplayContainer:adDisplayContainer
                                                    contentPlayhead:self.contentPlayhead
