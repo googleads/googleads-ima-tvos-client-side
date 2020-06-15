@@ -29,9 +29,11 @@ NSString *const kAdTagURLString = @"https://pubads.g.doubleclick.net/gampad/ads?
 
 @interface ViewController () <IMAAdsLoaderDelegate, IMAAdsManagerDelegate>
 @property(nonatomic) IMAAdsLoader *adsLoader;
+@property(nonatomic) IMAAdDisplayContainer *adDisplayContainer;
 @property(nonatomic) IMAAdsManager *adsManager;
 @property(nonatomic) IMAAVPlayerContentPlayhead *contentPlayhead;
 @property(nonatomic) AVPlayerViewController *contentPlayerViewController;
+@property(nonatomic, getter=isAdBreakActive) BOOL adBreakActive;
 @end
 
 @implementation ViewController
@@ -94,10 +96,10 @@ NSString *const kAdTagURLString = @"https://pubads.g.doubleclick.net/gampad/ads?
 
 - (void)requestAds {
   // Pass the main view as the container for ad display.
-  IMAAdDisplayContainer *adDisplayContainer =
-      [[IMAAdDisplayContainer alloc] initWithAdContainer:self.view viewController:self];
+  self.adDisplayContainer = [[IMAAdDisplayContainer alloc] initWithAdContainer:self.view
+                                                                viewController:self];
   IMAAdsRequest *request = [[IMAAdsRequest alloc] initWithAdTagUrl:kAdTagURLString
-                                                adDisplayContainer:adDisplayContainer
+                                                adDisplayContainer:self.adDisplayContainer
                                                    contentPlayhead:self.contentPlayhead
                                                        userContext:nil];
   [self.adsLoader requestAdsWithRequest:request];
@@ -110,6 +112,18 @@ NSString *const kAdTagURLString = @"https://pubads.g.doubleclick.net/gampad/ads?
 
 - (void)dealloc {
   [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - UIFocusEnvironment
+
+- (NSArray<id<UIFocusEnvironment>> *)preferredFocusEnvironments {
+  if (self.isAdBreakActive) {
+    // Send focus to the ad display container during an ad break.
+    return @[ self.adDisplayContainer.focusEnvironment ];
+  } else {
+    // Send focus to the content player otherwise.
+    return @[ self.contentPlayerViewController ];
+  }
 }
 
 #pragma mark - IMAAdsLoaderDelegate
@@ -147,12 +161,18 @@ NSString *const kAdTagURLString = @"https://pubads.g.doubleclick.net/gampad/ads?
   // Pause the content for the SDK to play ads.
   [self.contentPlayerViewController.player pause];
   [self hideContentPlayer];
+  // Trigger an update to send focus to the ad display container.
+  self.adBreakActive = YES;
+  [self setNeedsFocusUpdate];
 }
 
 - (void)adsManagerDidRequestContentResume:(IMAAdsManager *)adsManager {
   // Resume the content since the SDK is done playing ads (at least for now).
   [self showContentPlayer];
   [self.contentPlayerViewController.player play];
+  // Trigger an update to send focus to the content player.
+  self.adBreakActive = NO;
+  [self setNeedsFocusUpdate];
 }
 
 @end

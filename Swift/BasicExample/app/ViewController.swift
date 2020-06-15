@@ -24,9 +24,11 @@ class ViewController: UIViewController, IMAAdsLoaderDelegate, IMAAdsManagerDeleg
     "https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dlinear&correlator="  //NOLINT
 
   var adsLoader: IMAAdsLoader!
+  var adDisplayContainer: IMAAdDisplayContainer!
   var adsManager: IMAAdsManager!
   var contentPlayhead: IMAAVPlayerContentPlayhead?
   var playerViewController: AVPlayerViewController!
+  var adBreakActive = false
 
   deinit {
     NotificationCenter.default.removeObserver(self)
@@ -84,7 +86,7 @@ class ViewController: UIViewController, IMAAdsLoaderDelegate, IMAAdsManagerDeleg
 
   func requestAds() {
     // Create ad display container for ad rendering.
-    let adDisplayContainer = IMAAdDisplayContainer(adContainer: self.view, viewController: self)
+    adDisplayContainer = IMAAdDisplayContainer(adContainer: self.view, viewController: self)
     // Create an ad request with our ad tag, display container, and optional user context.
     let request = IMAAdsRequest(
       adTagUrl: ViewController.AdTagURLString,
@@ -97,6 +99,18 @@ class ViewController: UIViewController, IMAAdsLoaderDelegate, IMAAdsManagerDeleg
 
   @objc func contentDidFinishPlaying(_ notification: Notification) {
     adsLoader.contentComplete()
+  }
+
+  // MARK: - UIFocusEnvironment
+
+  override var preferredFocusEnvironments: [UIFocusEnvironment] {
+    if adBreakActive {
+      // Send focus to the ad display container during an ad break.
+      return [adDisplayContainer.focusEnvironment!]
+    } else {
+      // Send focus to the content player otherwise.
+      return [playerViewController]
+    }
   }
 
   // MARK: - IMAAdsLoaderDelegate
@@ -134,11 +148,17 @@ class ViewController: UIViewController, IMAAdsLoaderDelegate, IMAAdsManagerDeleg
     // Pause the content for the SDK to play ads.
     playerViewController.player?.pause()
     hideContentPlayer()
+    // Trigger an update to send focus to the ad display container.
+    adBreakActive = true
+    setNeedsFocusUpdate()
   }
 
   func adsManagerDidRequestContentResume(_ adsManager: IMAAdsManager!) {
     // Resume the content since the SDK is done playing ads (at least for now).
     showContentPlayer()
     playerViewController.player?.play()
+    // Trigger an update to send focus to the content player.
+    adBreakActive = false
+    setNeedsFocusUpdate()
   }
 }
