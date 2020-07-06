@@ -131,9 +131,15 @@ class ViewController: UIViewController, IMAAdsLoaderDelegate, IMAAdsManagerDeleg
   // MARK: - IMAAdsManagerDelegate
 
   func adsManager(_ adsManager: IMAAdsManager!, didReceive event: IMAAdEvent!) {
-    // Play each ad once it has been loaded
-    if event.type == IMAAdEventType.LOADED {
+    switch event.type {
+    case IMAAdEventType.LOADED:
+      // Play each ad once it has been loaded.
       adsManager.start()
+    case IMAAdEventType.ICON_FALLBACK_IMAGE_CLOSED:
+      // Resume playback after the user has closed the dialog.
+      adsManager.resume()
+    default:
+      break
     }
   }
 

@@ -144,9 +144,19 @@ NSString *const kAdTagURLString = @"https://pubads.g.doubleclick.net/gampad/ads?
 #pragma mark - IMAAdsManagerDelegate
 
 - (void)adsManager:(IMAAdsManager *)adsManager didReceiveAdEvent:(IMAAdEvent *)event {
-  // Play each ad once it has loaded.
-  if (event.type == kIMAAdEvent_LOADED) {
-    [adsManager start];
+  switch (event.type) {
+    case kIMAAdEvent_LOADED: {
+      // Play each ad once it has loaded.
+      [adsManager start];
+      break;
+    }
+    case kIMAAdEvent_ICON_FALLBACK_IMAGE_CLOSED: {
+      // Resume ad after user has closed dialog.
+      [adsManager resume];
+      break;
+    }
+    default:
+      break;
   }
 }
 
