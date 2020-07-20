@@ -116,13 +116,8 @@ NSString *const kAdTagURLString = @"https://pubads.g.doubleclick.net/gampad/ads?
 #pragma mark - UIFocusEnvironment
 
 - (NSArray<id<UIFocusEnvironment>> *)preferredFocusEnvironments {
-  if (self.isAdBreakActive) {
-    // Send focus to the ad display container during an ad break.
-    return @[ self.adDisplayContainer.focusEnvironment ];
-  } else {
-    // Send focus to the content player otherwise.
-    return @[ self.contentPlayerViewController ];
-  }
+  // Send focus to the content player.
+  return @[ self.contentPlayerViewController ];
 }
 
 #pragma mark - IMAAdsLoaderDelegate
