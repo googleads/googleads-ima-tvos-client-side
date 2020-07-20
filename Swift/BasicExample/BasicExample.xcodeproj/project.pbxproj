@@ -7,21 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D29E2F912343D41E004ECBC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E2F902343D41E004ECBC9 /* AppDelegate.swift */; };
-		D29E2F932343D41E004ECBC9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E2F922343D41E004ECBC9 /* ViewController.swift */; };
-		D29E2F962343D41E004ECBC9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D29E2F942343D41E004ECBC9 /* Main.storyboard */; };
-		D29E2F982343D420004ECBC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D29E2F972343D420004ECBC9 /* Assets.xcassets */; };
+		AD2D279524C61BCD00F8055E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2D279024C61BCD00F8055E /* AppDelegate.swift */; };
+		AD2D279624C61BCD00F8055E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2D279124C61BCD00F8055E /* ViewController.swift */; };
+		AD2D279724C61BCD00F8055E /* Base.lproj in Resources */ = {isa = PBXBuildFile; fileRef = AD2D279224C61BCD00F8055E /* Base.lproj */; };
+		BACE8469679E2EEBA394E063 /* libPods-Basic Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 464FA7A32C5C00B24A64389A /* libPods-Basic Example.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		161EE7216E13FF6598D3722E /* Pods-Basic Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Basic Example.release.xcconfig"; path = "Target Support Files/Pods-Basic Example/Pods-Basic Example.release.xcconfig"; sourceTree = "<group>"; };
+		464FA7A32C5C00B24A64389A /* libPods-Basic Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Basic Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		64B92879A9C806B820646F67 /* Pods-Basic Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Basic Example.debug.xcconfig"; path = "Target Support Files/Pods-Basic Example/Pods-Basic Example.debug.xcconfig"; sourceTree = "<group>"; };
+		AD2D279024C61BCD00F8055E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = app/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
+		AD2D279124C61BCD00F8055E /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = app/ViewController.swift; sourceTree = SOURCE_ROOT; };
+		AD2D279224C61BCD00F8055E /* Base.lproj */ = {isa = PBXFileReference; lastKnownFileType = file; name = Base.lproj; path = app/Base.lproj; sourceTree = SOURCE_ROOT; };
+		AD2D279424C61BCD00F8055E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = app/Info.plist; sourceTree = SOURCE_ROOT; };
 		D29E2F8D2343D41E004ECBC9 /* Basic Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Basic Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D29E2F902343D41E004ECBC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D29E2F922343D41E004ECBC9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D29E2F952343D41E004ECBC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		D29E2F972343D420004ECBC9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D29E2F992343D420004ECBC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,12 +29,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BACE8469679E2EEBA394E063 /* libPods-Basic Example.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C836ED96DA7E5BC33BB1F65 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				464FA7A32C5C00B24A64389A /* libPods-Basic Example.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		1D8DBAB4041D270EFAC6F6CF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -50,6 +59,7 @@
 				D29E2F8F2343D41E004ECBC9 /* Basic Example */,
 				D29E2F8E2343D41E004ECBC9 /* Products */,
 				1D8DBAB4041D270EFAC6F6CF /* Pods */,
+				1C836ED96DA7E5BC33BB1F65 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,11 +74,10 @@
 		D29E2F8F2343D41E004ECBC9 /* Basic Example */ = {
 			isa = PBXGroup;
 			children = (
-				D29E2F902343D41E004ECBC9 /* AppDelegate.swift */,
-				D29E2F922343D41E004ECBC9 /* ViewController.swift */,
-				D29E2F942343D41E004ECBC9 /* Main.storyboard */,
-				D29E2F972343D420004ECBC9 /* Assets.xcassets */,
-				D29E2F992343D420004ECBC9 /* Info.plist */,
+				AD2D279024C61BCD00F8055E /* AppDelegate.swift */,
+				AD2D279224C61BCD00F8055E /* Base.lproj */,
+				AD2D279424C61BCD00F8055E /* Info.plist */,
+				AD2D279124C61BCD00F8055E /* ViewController.swift */,
 			);
 			path = "Basic Example";
 			sourceTree = "<group>";
@@ -107,10 +116,11 @@
 				TargetAttributes = {
 					D29E2F8C2343D41E004ECBC9 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1150;
 					};
 				};
 			};
-			buildConfigurationList = D29E2F882343D41E004ECBC9 /* Build configuration list for PBXProject "Basic Example" */;
+			buildConfigurationList = D29E2F882343D41E004ECBC9 /* Build configuration list for PBXProject "BasicExample" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -133,8 +143,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D29E2F982343D420004ECBC9 /* Assets.xcassets in Resources */,
-				D29E2F962343D41E004ECBC9 /* Main.storyboard in Resources */,
+				AD2D279724C61BCD00F8055E /* Base.lproj in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,23 +196,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D29E2F932343D41E004ECBC9 /* ViewController.swift in Sources */,
-				D29E2F912343D41E004ECBC9 /* AppDelegate.swift in Sources */,
+				AD2D279624C61BCD00F8055E /* ViewController.swift in Sources */,
+				AD2D279524C61BCD00F8055E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		D29E2F942343D41E004ECBC9 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D29E2F952343D41E004ECBC9 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		D29E2F9A2343D420004ECBC9 /* Debug */ = {
@@ -324,16 +322,17 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 64B92879A9C806B820646F67 /* Pods-Basic Example.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "Basic Example/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/app/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "google.Basic-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 3;
 			};
@@ -343,10 +342,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 161EE7216E13FF6598D3722E /* Pods-Basic Example.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "Basic Example/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/app/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -361,7 +360,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D29E2F882343D41E004ECBC9 /* Build configuration list for PBXProject "Basic Example" */ = {
+		D29E2F882343D41E004ECBC9 /* Build configuration list for PBXProject "BasicExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D29E2F9A2343D420004ECBC9 /* Debug */,
