@@ -1,0 +1,16 @@
+PODS:
+  - GoogleAds-IMA-tvOS-SDK (4.2.1)
+
+DEPENDENCIES:
+  - GoogleAds-IMA-tvOS-SDK
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - GoogleAds-IMA-tvOS-SDK
+
+SPEC CHECKSUMS:
+  GoogleAds-IMA-tvOS-SDK: 2e13f90cdb893de667b12db571e5bed5a6c0ec8c
+
+PODFILE CHECKSUM: a220bc25204ad7958fbb0d4a7c9b9c3ded747fb7
+
+COCOAPODS: 1.9.3
