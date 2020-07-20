@@ -96,8 +96,7 @@ NSString *const kAdTagURLString = @"https://pubads.g.doubleclick.net/gampad/ads?
 
 - (void)requestAds {
   // Pass the main view as the container for ad display.
-  self.adDisplayContainer = [[IMAAdDisplayContainer alloc] initWithAdContainer:self.view
-                                                                viewController:self];
+  self.adDisplayContainer = [[IMAAdDisplayContainer alloc] initWithAdContainer:self.view];
   IMAAdsRequest *request = [[IMAAdsRequest alloc] initWithAdTagUrl:kAdTagURLString
                                                 adDisplayContainer:self.adDisplayContainer
                                                    contentPlayhead:self.contentPlayhead
@@ -148,11 +147,6 @@ NSString *const kAdTagURLString = @"https://pubads.g.doubleclick.net/gampad/ads?
     case kIMAAdEvent_LOADED: {
       // Play each ad once it has loaded.
       [adsManager start];
-      break;
-    }
-    case kIMAAdEvent_ICON_FALLBACK_IMAGE_CLOSED: {
-      // Resume ad after user has closed dialog.
-      [adsManager resume];
       break;
     }
     default:
