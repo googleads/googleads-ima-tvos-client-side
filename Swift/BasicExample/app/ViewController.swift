@@ -86,7 +86,7 @@ class ViewController: UIViewController, IMAAdsLoaderDelegate, IMAAdsManagerDeleg
 
   func requestAds() {
     // Create ad display container for ad rendering.
-    adDisplayContainer = IMAAdDisplayContainer(adContainer: self.view, viewController: self)
+    adDisplayContainer = IMAAdDisplayContainer(adContainer: self.view)
     // Create an ad request with our ad tag, display container, and optional user context.
     let request = IMAAdsRequest(
       adTagUrl: ViewController.AdTagURLString,
@@ -135,9 +135,6 @@ class ViewController: UIViewController, IMAAdsLoaderDelegate, IMAAdsManagerDeleg
     case IMAAdEventType.LOADED:
       // Play each ad once it has been loaded.
       adsManager.start()
-    case IMAAdEventType.ICON_FALLBACK_IMAGE_CLOSED:
-      // Resume playback after the user has closed the dialog.
-      adsManager.resume()
     default:
       break
     }
