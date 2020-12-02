@@ -104,9 +104,9 @@ class ViewController: UIViewController, IMAAdsLoaderDelegate, IMAAdsManagerDeleg
   // MARK: - UIFocusEnvironment
 
   override var preferredFocusEnvironments: [UIFocusEnvironment] {
-    if adBreakActive {
+    if adBreakActive, let adFocusEnvironment = adDisplayContainer?.focusEnvironment {
       // Send focus to the ad display container during an ad break.
-      return [adDisplayContainer.focusEnvironment!]
+      return [adFocusEnvironment]
     } else {
       // Send focus to the content player otherwise.
       return [playerViewController]
