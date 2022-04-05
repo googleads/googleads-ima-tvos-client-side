@@ -22,10 +22,10 @@
 NSString *const kContentURLString =
     @"https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_fmp4/"
     @"master.m3u8";
-NSString *const kAdTagURLString = @"https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&"
-    @"iu=/124319096/external/ad_rule_samples&ciu_szs=300x250&ad_rule=1&impl=s&gdfp_req=1&env=vp&"
-    @"output=vmap&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ar%3D"
-    @"premidpostlongpod&cmsid=496&vid=short_tencue&correlator=[TIMESTAMP]";
+NSString *const kAdTagURLString = @"https://pubads.g.doubleclick.net/gampad/ads?"
+    @"iu=/21775744923/external/vmap_ad_samples&sz=640x480&"
+    @"cust_params=sample_ar%3Dpremidpostlongpod&ciu_szs=300x250&gdfp_req=1&ad_rule=1&"
+    @"output=vmap&unviewed_position_start=1&env=vp&impl=s&cmsid=496&vid=short_onecue&correlator=";
 
 @interface ViewController () <IMAAdsLoaderDelegate, IMAAdsManagerDelegate>
 @property(nonatomic) IMAAdsLoader *adsLoader;
