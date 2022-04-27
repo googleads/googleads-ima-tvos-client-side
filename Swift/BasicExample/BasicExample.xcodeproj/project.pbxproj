@@ -70,7 +70,7 @@
         D29E2F972343D420004ECBC9 /* Assets.xcassets */,
         D29E2F992343D420004ECBC9 /* Info.plist */,
       );
-      path = "Basic Example";
+      path = "BasicExample";
       sourceTree = "<group>";
     };
 /* End PBXGroup section */
@@ -78,7 +78,7 @@
 /* Begin PBXNativeTarget section */
     D29E2F8C2343D41E004ECBC9 /* Basic Example */ = {
       isa = PBXNativeTarget;
-      buildConfigurationList = D29E2F9C2343D420004ECBC9 /* Build configuration list for PBXNativeTarget "Basic Example" */;
+      buildConfigurationList = D29E2F9C2343D420004ECBC9 /* Build configuration list for PBXNativeTarget "BasicExample" */;
       buildPhases = (
         D0A20E3079E05DFC199ED2EB /* [CP] Check Pods Manifest.lock */,
         D29E2F892343D41E004ECBC9 /* Sources */,
@@ -90,8 +90,8 @@
       );
       dependencies = (
       );
-      name = "Basic Example";
-      productName = "Basic Example";
+      name = "BasicExample";
+      productName = "BasicExample";
       productReference = D29E2F8D2343D41E004ECBC9 /* Basic Example.app */;
       productType = "com.apple.product-type.application";
     };
@@ -110,7 +110,7 @@
           };
         };
       };
-      buildConfigurationList = D29E2F882343D41E004ECBC9 /* Build configuration list for PBXProject "Basic Example" */;
+      buildConfigurationList = D29E2F882343D41E004ECBC9 /* Build configuration list for PBXProject "BasicExample" */;
       compatibilityVersion = "Xcode 9.3";
       developmentRegion = en;
       hasScannedForEncodings = 0;
@@ -361,7 +361,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-    D29E2F882343D41E004ECBC9 /* Build configuration list for PBXProject "Basic Example" */ = {
+    D29E2F882343D41E004ECBC9 /* Build configuration list for PBXProject "BasicExample" */ = {
       isa = XCConfigurationList;
       buildConfigurations = (
         D29E2F9A2343D420004ECBC9 /* Debug */,
@@ -370,7 +370,7 @@
       defaultConfigurationIsVisible = 0;
       defaultConfigurationName = Release;
     };
-    D29E2F9C2343D420004ECBC9 /* Build configuration list for PBXNativeTarget "Basic Example" */ = {
+    D29E2F9C2343D420004ECBC9 /* Build configuration list for PBXNativeTarget "BasicExample" */ = {
       isa = XCConfigurationList;
       buildConfigurations = (
         D29E2F9D2343D420004ECBC9 /* Debug */,
