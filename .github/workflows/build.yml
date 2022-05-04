@@ -18,14 +18,8 @@ jobs:
       fail-fast: false
       matrix:
         regex:
-        # copybara:strip_begin
-        # LINT.IfChange
-        # copybara:strip_end
         - "ObjectiveC/BasicExample"
         - "Swift/BasicExample"
-        # copybara:strip_begin
-        # LINT.ThenChange(//depot/google3/googlemac/iPhone/InteractiveMediaAds/IMA/tvos/samples/clientSide/copy.bara.sky)
-        # copybara:strip_end
     steps:
       - name: Clone Repo
         uses: actions/checkout@v1
