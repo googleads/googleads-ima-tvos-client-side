@@ -17,7 +17,8 @@
 
 #import <AVKit/AVKit.h>
 
-#import <GoogleInteractiveMediaAds/GoogleInteractiveMediaAds.h>
+@import GoogleInteractiveMediaAds;
+
 
 NSString *const kContentURLString =
     @"https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_fmp4/"
