@@ -115,22 +115,22 @@ class ViewController: UIViewController, IMAAdsLoaderDelegate, IMAAdsManagerDeleg
 
   // MARK: - IMAAdsLoaderDelegate
 
-  func adsLoader(_ loader: IMAAdsLoader!, adsLoadedWith adsLoadedData: IMAAdsLoadedData!) {
+  func adsLoader(_ loader: IMAAdsLoader, adsLoadedWith adsLoadedData: IMAAdsLoadedData) {
     // Grab the instance of the IMAAdsManager and set ourselves as the delegate.
     adsManager = adsLoadedData.adsManager
     adsManager.delegate = self
     adsManager.initialize(with: nil)
   }
 
-  func adsLoader(_ loader: IMAAdsLoader!, failedWith adErrorData: IMAAdLoadingErrorData!) {
-    print("Error loading ads: \(adErrorData.adError.message)")
+  func adsLoader(_ loader: IMAAdsLoader, failedWith adErrorData: IMAAdLoadingErrorData) {
+    print("Error loading ads: \(adErrorData.adError.message ?? "No error message available.")")
     showContentPlayer()
     playerViewController.player?.play()
   }
 
   // MARK: - IMAAdsManagerDelegate
 
-  func adsManager(_ adsManager: IMAAdsManager!, didReceive event: IMAAdEvent!) {
+  func adsManager(_ adsManager: IMAAdsManager, didReceive event: IMAAdEvent) {
     switch event.type {
     case IMAAdEventType.LOADED:
       // Play each ad once it has been loaded.
@@ -143,14 +143,14 @@ class ViewController: UIViewController, IMAAdsLoaderDelegate, IMAAdsManagerDeleg
     }
   }
 
-  func adsManager(_ adsManager: IMAAdsManager!, didReceive error: IMAAdError!) {
+  func adsManager(_ adsManager: IMAAdsManager, didReceive error: IMAAdError) {
     // Fall back to playing content
-    print("AdsManager error: \(error.message)")
+    print("AdsManager error: \(error.message ?? "No error message available.")")
     showContentPlayer()
     playerViewController.player?.play()
   }
 
-  func adsManagerDidRequestContentPause(_ adsManager: IMAAdsManager!) {
+  func adsManagerDidRequestContentPause(_ adsManager: IMAAdsManager) {
     // Pause the content for the SDK to play ads.
     playerViewController.player?.pause()
     hideContentPlayer()
@@ -159,7 +159,7 @@ class ViewController: UIViewController, IMAAdsLoaderDelegate, IMAAdsManagerDeleg
     setNeedsFocusUpdate()
   }
 
-  func adsManagerDidRequestContentResume(_ adsManager: IMAAdsManager!) {
+  func adsManagerDidRequestContentResume(_ adsManager: IMAAdsManager) {
     // Resume the content since the SDK is done playing ads (at least for now).
     showContentPlayer()
     playerViewController.player?.play()
