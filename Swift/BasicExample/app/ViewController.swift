@@ -18,10 +18,13 @@ import GoogleInteractiveMediaAds
 import UIKit
 
 class ViewController: UIViewController, IMAAdsLoaderDelegate, IMAAdsManagerDelegate {
-  static let ContentURLString =
-    "https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_fmp4/master.m3u8"  //NOLINT
-  static let AdTagURLString =
-    "https://pubads.g.doubleclick.net/gampad/ads?iu=/21775744923/external/single_ad_samples&sz=640x480&cust_params=sample_ct%3Dlinear&ciu_szs=300x250%2C728x90&gdfp_req=1&output=vast&unviewed_position_start=1&env=vp&impl=s&correlator="  //NOLINT
+  static let contentURLString =
+    "https://devstreaming-cdn.apple.com/videos/streaming/examples/"
+    + "img_bipbop_adv_example_fmp4/master.m3u8"
+  static let adTagURLString =
+    "https://pubads.g.doubleclick.net/gampad/ads?iu=/21775744923/external/single_ad_samples&"
+    + "sz=640x480&cust_params=sample_ct%3Dlinear&ciu_szs=300x250%2C728x90&gdfp_req=1&output=vast&"
+    + "unviewed_position_start=1&env=vp&correlator="
 
   var adsLoader: IMAAdsLoader!
   var adDisplayContainer: IMAAdDisplayContainer!
@@ -48,7 +51,7 @@ class ViewController: UIViewController, IMAAdsLoaderDelegate, IMAAdsManagerDeleg
 
   func setUpContentPlayer() {
     // Load AVPlayer with path to our content.
-    let contentURL = URL(string: ViewController.ContentURLString)!
+    let contentURL = URL(string: ViewController.contentURLString)!
     let player = AVPlayer(url: contentURL)
     playerViewController = AVPlayerViewController()
     playerViewController.player = player
@@ -89,7 +92,7 @@ class ViewController: UIViewController, IMAAdsLoaderDelegate, IMAAdsManagerDeleg
     adDisplayContainer = IMAAdDisplayContainer(adContainer: self.view, viewController: self)
     // Create an ad request with our ad tag, display container, and optional user context.
     let request = IMAAdsRequest(
-      adTagUrl: ViewController.AdTagURLString,
+      adTagUrl: ViewController.adTagURLString,
       adDisplayContainer: adDisplayContainer,
       contentPlayhead: contentPlayhead,
       userContext: nil)
