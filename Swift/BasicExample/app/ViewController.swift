@@ -13,10 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+// [START ima_tvos_swift_import]
 import AVFoundation
 import GoogleInteractiveMediaAds
 import UIKit
 
+// [END ima_tvos_swift_import]
+
+// [START ima_tvos_swift_view_controller]
 class ViewController: UIViewController, IMAAdsLoaderDelegate, IMAAdsManagerDelegate {
   static let contentURLString =
     "https://devstreaming-cdn.apple.com/videos/streaming/examples/"
@@ -48,7 +53,9 @@ class ViewController: UIViewController, IMAAdsLoaderDelegate, IMAAdsManagerDeleg
     super.viewDidAppear(animated)
     requestAds()
   }
+  // [END ima_tvos_swift_view_controller]
 
+  // [START ima_tvos_swift_setup_content_player]
   func setUpContentPlayer() {
     // Load AVPlayer with path to our content.
     let contentURL = URL(string: ViewController.contentURLString)!
@@ -66,6 +73,7 @@ class ViewController: UIViewController, IMAAdsLoaderDelegate, IMAAdsManagerDeleg
 
     showContentPlayer()
   }
+  // [END ima_tvos_swift_setup_content_player]
 
   func showContentPlayer() {
     self.addChild(playerViewController)
@@ -81,6 +89,7 @@ class ViewController: UIViewController, IMAAdsLoaderDelegate, IMAAdsManagerDeleg
     playerViewController.view.removeFromSuperview()
     playerViewController.removeFromParent()
   }
+  // [START ima_tvos_swift_setup_ads_loader]
 
   func setUpAdsLoader() {
     adsLoader = IMAAdsLoader(settings: nil)
@@ -99,10 +108,13 @@ class ViewController: UIViewController, IMAAdsLoaderDelegate, IMAAdsManagerDeleg
 
     adsLoader.requestAds(with: request)
   }
+  // [END ima_tvos_swift_setup_ads_loader]
 
+  // [START ima_tvos_swift_content_did_finish_playing]
   @objc func contentDidFinishPlaying(_ notification: Notification) {
     adsLoader.contentComplete()
   }
+  // [END ima_tvos_swift_content_did_finish_playing]
 
   // MARK: - UIFocusEnvironment
 
@@ -118,6 +130,7 @@ class ViewController: UIViewController, IMAAdsLoaderDelegate, IMAAdsManagerDeleg
 
   // MARK: - IMAAdsLoaderDelegate
 
+  // [START ima_tvos_swift_ads_loader_delegate]
   func adsLoader(_ loader: IMAAdsLoader, adsLoadedWith adsLoadedData: IMAAdsLoadedData) {
     // Grab the instance of the IMAAdsManager and set ourselves as the delegate.
     adsManager = adsLoadedData.adsManager
@@ -130,9 +143,11 @@ class ViewController: UIViewController, IMAAdsLoaderDelegate, IMAAdsManagerDeleg
     showContentPlayer()
     playerViewController.player?.play()
   }
+  // [END ima_tvos_swift_ads_loader_delegate]
 
   // MARK: - IMAAdsManagerDelegate
 
+  // [START ima_tvos_swift_ads_manager_delegate]
   func adsManager(_ adsManager: IMAAdsManager, didReceive event: IMAAdEvent) {
     switch event.type {
     case IMAAdEventType.LOADED:
@@ -145,14 +160,18 @@ class ViewController: UIViewController, IMAAdsLoaderDelegate, IMAAdsManagerDeleg
       break
     }
   }
+  // [END ima_tvos_swift_ads_manager_delegate]
 
+  // [START ima_tvos_swift_error_handler]
   func adsManager(_ adsManager: IMAAdsManager, didReceive error: IMAAdError) {
     // Fall back to playing content
     print("AdsManager error: \(error.message ?? "No error message available.")")
     showContentPlayer()
     playerViewController.player?.play()
   }
+  // [END ima_tvos_swift_error_handler]
 
+  // [START ima_tvos_swift_content_play_pause]
   func adsManagerDidRequestContentPause(_ adsManager: IMAAdsManager) {
     // Pause the content for the SDK to play ads.
     playerViewController.player?.pause()
@@ -170,4 +189,5 @@ class ViewController: UIViewController, IMAAdsLoaderDelegate, IMAAdsManagerDeleg
     adBreakActive = false
     setNeedsFocusUpdate()
   }
+  // [END ima_tvos_swift_content_play_pause]
 }

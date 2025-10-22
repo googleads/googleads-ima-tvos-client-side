@@ -13,16 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#import "ViewController.h"
 
+// [START ima_tvos_objc_import]
+#import "ViewController.h"
 #import <AVKit/AVKit.h>
 
 @import GoogleInteractiveMediaAds;
+// [END ima_tvos_objc_import]
 
-
+// [START ima_tvos_objc_view_controller]
 NSString *const kContentURLString =
-    @"https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_fmp4/"
-    @"master.m3u8";
+    @"https://storage.googleapis.com/interactive-media-ads/media/stock.mp4";
 NSString *const kAdTagURLString =
     @"https://pubads.g.doubleclick.net/gampad/ads?"
     @"iu=/21775744923/external/vmap_ad_samples&sz=640x480&"
@@ -52,11 +53,25 @@ NSString *const kAdTagURLString =
   [self requestAds];
 }
 
-- (void)setupAdsLoader {
-  self.adsLoader = [[IMAAdsLoader alloc] init];
-  self.adsLoader.delegate = self;
+// Add the content video player as a child view controller.
+- (void)showContentPlayer {
+  [self addChildViewController:self.contentPlayerViewController];
+  self.contentPlayerViewController.view.frame = self.view.bounds;
+  [self.view insertSubview:self.contentPlayerViewController.view atIndex:0];
+  [self.contentPlayerViewController didMoveToParentViewController:self];
 }
 
+// Remove and detach the content video player.
+- (void)hideContentPlayer {
+  // The whole controller needs to be detached so that it doesn't capture resume events from the
+  // remote and play content underneath the ad.
+  [self.contentPlayerViewController willMoveToParentViewController:nil];
+  [self.contentPlayerViewController.view removeFromSuperview];
+  [self.contentPlayerViewController removeFromParentViewController];
+}
+// [END ima_tvos_objc_view_controller]
+
+// [START ima_tvos_objc_setup_content_player]
 - (void)setupContentPlayer {
   // Create a content video player. Create a playhead to track content progress so the SDK knows
   // when to play ads in a VMAP playlist.
@@ -78,22 +93,12 @@ NSString *const kAdTagURLString =
   // Attach content video player to view hierarchy.
   [self showContentPlayer];
 }
+// [END ima_tvos_objc_setup_content_player]
 
-// Add the content video player as a child view controller.
-- (void)showContentPlayer {
-  [self addChildViewController:self.contentPlayerViewController];
-  self.contentPlayerViewController.view.frame = self.view.bounds;
-  [self.view insertSubview:self.contentPlayerViewController.view atIndex:0];
-  [self.contentPlayerViewController didMoveToParentViewController:self];
-}
-
-// Remove and detach the content video player.
-- (void)hideContentPlayer {
-  // The whole controller needs to be detached so that it doesn't capture resume events from the
-  // remote and play content underneath the ad.
-  [self.contentPlayerViewController willMoveToParentViewController:nil];
-  [self.contentPlayerViewController.view removeFromSuperview];
-  [self.contentPlayerViewController removeFromParentViewController];
+// [START ima_tvos_objc_setup_ads_loader]
+- (void)setupAdsLoader {
+  self.adsLoader = [[IMAAdsLoader alloc] init];
+  self.adsLoader.delegate = self;
 }
 
 - (void)requestAds {
@@ -106,7 +111,9 @@ NSString *const kAdTagURLString =
                                                        userContext:nil];
   [self.adsLoader requestAdsWithRequest:request];
 }
+// [END ima_tvos_objc_setup_ads_loader]
 
+// [START ima_tvos_objc_content_did_finish_playing]
 - (void)contentDidFinishPlaying:(NSNotification *)notification {
   // Notify the SDK that the postrolls should be played.
   [self.adsLoader contentComplete];
@@ -115,6 +122,7 @@ NSString *const kAdTagURLString =
 - (void)dealloc {
   [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+// [END ima_tvos_objc_content_did_finish_playing]
 
 #pragma mark - UIFocusEnvironment
 
@@ -128,6 +136,7 @@ NSString *const kAdTagURLString =
   }
 }
 
+// [START ima_tvos_objc_ads_loader_delegate]
 #pragma mark - IMAAdsLoaderDelegate
 
 - (void)adsLoader:(IMAAdsLoader *)loader adsLoadedWithData:(IMAAdsLoadedData *)adsLoadedData {
@@ -142,7 +151,9 @@ NSString *const kAdTagURLString =
   NSLog(@"Error loading ads: %@", adErrorData.adError.message);
   [self.contentPlayerViewController.player play];
 }
+// [END ima_tvos_objc_ads_loader_delegate]
 
+// [START ima_tvos_objc_ads_manager_delegate]
 #pragma mark - IMAAdsManagerDelegate
 
 - (void)adsManager:(IMAAdsManager *)adsManager didReceiveAdEvent:(IMAAdEvent *)event {
@@ -161,14 +172,18 @@ NSString *const kAdTagURLString =
       break;
   }
 }
+// [END ima_tvos_objc_ads_manager_delegate]
 
+// [START ima_tvos_objc_error_handler]
 - (void)adsManager:(IMAAdsManager *)adsManager didReceiveAdError:(IMAAdError *)error {
   // Fall back to playing content.
   NSLog(@"AdsManager error: %@", error.message);
   [self showContentPlayer];
   [self.contentPlayerViewController.player play];
 }
+// [END ima_tvos_objc_error_handler]
 
+// [START ima_tvos_objc_content_play_pause]
 - (void)adsManagerDidRequestContentPause:(IMAAdsManager *)adsManager {
   // Pause the content for the SDK to play ads.
   [self.contentPlayerViewController.player pause];
@@ -186,5 +201,6 @@ NSString *const kAdTagURLString =
   self.adBreakActive = NO;
   [self setNeedsFocusUpdate];
 }
+// [END ima_tvos_objc_content_play_pause]
 
 @end
