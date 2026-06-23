@@ -89,6 +89,7 @@ class ViewController: UIViewController, IMAAdsLoaderDelegate, IMAAdsManagerDeleg
     playerViewController.view.removeFromSuperview()
     playerViewController.removeFromParent()
   }
+  // [START ima_tvos_swift_setup_ads_loader]
 
   // [START ima_tvos_swift_setup_ads_loader]
   func setUpAdsLoader() {
