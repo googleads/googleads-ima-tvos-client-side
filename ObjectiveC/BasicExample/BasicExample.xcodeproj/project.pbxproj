@@ -12,6 +12,7 @@
     A0A20B4A2294840F00D74C0A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A20B2F2294838E00D74C0A /* main.m */; };
     A0A20B4C2294841900D74C0A /* ViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = A0A20B2D2294838E00D74C0A /* ViewController.h */; };
     A0A20B4D2294841D00D74C0A /* AppDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = A0A20B2A2294838E00D74C0A /* AppDelegate.h */; };
+    EA5E1646DE0F6BC6B6E9BB54 /* GoogleInteractiveMediaAdsTvOS in Frameworks */ = {isa = PBXBuildFile; productRef = B5AD2FC17935DC25937F3437 /* GoogleInteractiveMediaAdsTvOS */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
       isa = PBXFrameworksBuildPhase;
       buildActionMask = 2147483647;
       files = (
+        EA5E1646DE0F6BC6B6E9BB54 /* GoogleInteractiveMediaAdsTvOS in Frameworks */,
       );
       runOnlyForDeploymentPostprocessing = 0;
     };
@@ -61,7 +63,15 @@
       children = (
         A0A20B292294838E00D74C0A /* app */,
         A0A20B35229483C300D74C0A /* Products */,
+        D492091F70550DA0D6398B1D /* Frameworks */,
       );
+      sourceTree = "<group>";
+    };
+    D492091F70550DA0D6398B1D /* Frameworks */ = {
+      isa = PBXGroup;
+      children = (
+      );
+      name = Frameworks;
       sourceTree = "<group>";
     };
 /* End PBXGroup section */
@@ -93,6 +103,9 @@
       dependencies = (
       );
       name = BasicExample;
+      packageProductDependencies = (
+        B5AD2FC17935DC25937F3437 /* GoogleInteractiveMediaAdsTvOS */,
+      );
       productName = BasicExample;
       productReference = A0A20B34229483C300D74C0A /* BasicExample.app */;
       productType = "com.apple.product-type.application";
@@ -119,6 +132,9 @@
         Base,
       );
       mainGroup = A0F3A52F22948352003CBDDC;
+      packageReferences = (
+        4067C575A5EAA6A3A0600CEA /* XCRemoteSwiftPackageReference "swift-package-manager-google-interactive-media-ads-tvos" */,
+      );
       productRefGroup = A0A20B35229483C300D74C0A /* Products */;
       projectDirPath = "";
       projectRoot = "";
@@ -291,12 +307,20 @@
     A0F3A53422948352003CBDDC /* Debug */ = {
       isa = XCBuildConfiguration;
       buildSettings = {
+        OTHER_LDFLAGS = (
+          "$(inherited)",
+          "-ObjC",
+        );
       };
       name = Debug;
     };
     A0F3A53522948352003CBDDC /* Release */ = {
       isa = XCBuildConfiguration;
       buildSettings = {
+        OTHER_LDFLAGS = (
+          "$(inherited)",
+          "-ObjC",
+        );
       };
       name = Release;
     };
@@ -322,6 +346,25 @@
       defaultConfigurationName = Release;
     };
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+    4067C575A5EAA6A3A0600CEA /* XCRemoteSwiftPackageReference "swift-package-manager-google-interactive-media-ads-tvos" */ = {
+      isa = XCRemoteSwiftPackageReference;
+      repositoryURL = "https://github.com/googleads/swift-package-manager-google-interactive-media-ads-tvos.git";
+      requirement = {
+        kind = upToNextMajorVersion;
+        minimumVersion = 4.17.0;
+      };
+    };
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+    B5AD2FC17935DC25937F3437 /* GoogleInteractiveMediaAdsTvOS */ = {
+      isa = XCSwiftPackageProductDependency;
+      package = 4067C575A5EAA6A3A0600CEA /* XCRemoteSwiftPackageReference "swift-package-manager-google-interactive-media-ads-tvos" */;
+      productName = GoogleInteractiveMediaAdsTvOS;
+    };
+/* End XCSwiftPackageProductDependency section */
   };
   rootObject = A0F3A53022948352003CBDDC /* Project object */;
 }

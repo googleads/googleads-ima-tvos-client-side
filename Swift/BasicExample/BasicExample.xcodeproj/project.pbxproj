@@ -7,14 +7,13 @@
   objects = {
 
 /* Begin PBXBuildFile section */
+    4285356C60B3C3081586F122 /* GoogleInteractiveMediaAdsTvOS in Frameworks */ = {isa = PBXBuildFile; productRef = D85DABD992637EAFE8A9C699 /* GoogleInteractiveMediaAdsTvOS */; };
     D29E2F912343D41E004ECBC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E2F902343D41E004ECBC9 /* AppDelegate.swift */; };
     D29E2F932343D41E004ECBC9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29E2F922343D41E004ECBC9 /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-    161EE7216E13FF6598D3722E /* Pods-BasicExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BasicExample.release.xcconfig"; path = "Target Support Files/Pods-BasicExample/Pods-BasicExample.release.xcconfig"; sourceTree = "<group>"; };
-    64B92879A9C806B820646F67 /* Pods-BasicExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BasicExample.debug.xcconfig"; path = "Target Support Files/Pods-BasicExample/Pods-BasicExample.debug.xcconfig"; sourceTree = "<group>"; };
-    D29E2F8D2343D41E004ECBC9 /* BasicExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BasicExample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+    D29E2F8D2343D41E004ECBC9 /* BasicExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BasicExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
     D29E2F902343D41E004ECBC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
     D29E2F922343D41E004ECBC9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
     D29E2F992343D420004ECBC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -25,27 +24,26 @@
       isa = PBXFrameworksBuildPhase;
       buildActionMask = 2147483647;
       files = (
+        4285356C60B3C3081586F122 /* GoogleInteractiveMediaAdsTvOS in Frameworks */,
       );
       runOnlyForDeploymentPostprocessing = 0;
     };
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-    1D8DBAB4041D270EFAC6F6CF /* Pods */ = {
+    1A569F18C5586A3956047513 /* Frameworks */ = {
       isa = PBXGroup;
       children = (
-        64B92879A9C806B820646F67 /* Pods-BasicExample.debug.xcconfig */,
-        161EE7216E13FF6598D3722E /* Pods-BasicExample.release.xcconfig */,
       );
-      path = Pods;
+      name = Frameworks;
       sourceTree = "<group>";
     };
     D29E2F842343D41E004ECBC9 = {
       isa = PBXGroup;
       children = (
-        D29E2F8F2343D41E004ECBC9 /* BasicExample */,
+        D29E2F8F2343D41E004ECBC9 /* app */,
         D29E2F8E2343D41E004ECBC9 /* Products */,
-        1D8DBAB4041D270EFAC6F6CF /* Pods */,
+        1A569F18C5586A3956047513 /* Frameworks */,
       );
       sourceTree = "<group>";
     };
@@ -57,7 +55,7 @@
       name = Products;
       sourceTree = "<group>";
     };
-    D29E2F8F2343D41E004ECBC9 /* BasicExample */ = {
+    D29E2F8F2343D41E004ECBC9 /* app */ = {
       isa = PBXGroup;
       children = (
         D29E2F902343D41E004ECBC9 /* AppDelegate.swift */,
@@ -74,17 +72,18 @@
       isa = PBXNativeTarget;
       buildConfigurationList = D29E2F9C2343D420004ECBC9 /* Build configuration list for PBXNativeTarget "BasicExample" */;
       buildPhases = (
-        D0A20E3079E05DFC199ED2EB /* [CP] Check Pods Manifest.lock */,
         D29E2F892343D41E004ECBC9 /* Sources */,
         D29E2F8A2343D41E004ECBC9 /* Frameworks */,
-        6D992F1EEB68DDDA41E5B1BA /* [CP] Embed Pods Frameworks */,
       );
       buildRules = (
       );
       dependencies = (
       );
-      name = "BasicExample";
-      productName = "BasicExample";
+      name = BasicExample;
+      packageProductDependencies = (
+        D85DABD992637EAFE8A9C699 /* GoogleInteractiveMediaAdsTvOS */,
+      );
+      productName = BasicExample;
       productReference = D29E2F8D2343D41E004ECBC9 /* BasicExample.app */;
       productType = "com.apple.product-type.application";
     };
@@ -112,6 +111,9 @@
         Base,
       );
       mainGroup = D29E2F842343D41E004ECBC9;
+      packageReferences = (
+        DFEA96270A561841C4FD7096 /* XCRemoteSwiftPackageReference "swift-package-manager-google-interactive-media-ads-tvos" */,
+      );
       productRefGroup = D29E2F8E2343D41E004ECBC9 /* Products */;
       projectDirPath = "";
       projectRoot = "";
@@ -229,6 +231,10 @@
         MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
         MTL_FAST_MATH = YES;
         ONLY_ACTIVE_ARCH = YES;
+        OTHER_LDFLAGS = (
+          "$(inherited)",
+          "-ObjC",
+        );
         SDKROOT = appletvos;
         SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
         SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -282,6 +288,10 @@
         GCC_WARN_UNUSED_VARIABLE = YES;
         MTL_ENABLE_DEBUG_INFO = NO;
         MTL_FAST_MATH = YES;
+        OTHER_LDFLAGS = (
+          "$(inherited)",
+          "-ObjC",
+        );
         SDKROOT = appletvos;
         SWIFT_COMPILATION_MODE = wholemodule;
         SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -292,12 +302,11 @@
     };
     D29E2F9D2343D420004ECBC9 /* Debug */ = {
       isa = XCBuildConfiguration;
-      baseConfigurationReference = 64B92879A9C806B820646F67 /* Pods-BasicExample.debug.xcconfig */;
       buildSettings = {
         ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
         ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
         CODE_SIGN_STYLE = Automatic;
-        INFOPLIST_FILE = "app/Info.plist";
+        INFOPLIST_FILE = app/Info.plist;
         LD_RUNPATH_SEARCH_PATHS = (
           "$(inherited)",
           "@executable_path/Frameworks",
@@ -311,12 +320,11 @@
     };
     D29E2F9E2343D420004ECBC9 /* Release */ = {
       isa = XCBuildConfiguration;
-      baseConfigurationReference = 161EE7216E13FF6598D3722E /* Pods-BasicExample.release.xcconfig */;
       buildSettings = {
         ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
         ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
         CODE_SIGN_STYLE = Automatic;
-        INFOPLIST_FILE = "app/Info.plist";
+        INFOPLIST_FILE = app/Info.plist;
         LD_RUNPATH_SEARCH_PATHS = (
           "$(inherited)",
           "@executable_path/Frameworks",
@@ -350,6 +358,25 @@
       defaultConfigurationName = Release;
     };
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+    DFEA96270A561841C4FD7096 /* XCRemoteSwiftPackageReference "swift-package-manager-google-interactive-media-ads-tvos" */ = {
+      isa = XCRemoteSwiftPackageReference;
+      repositoryURL = "https://github.com/googleads/swift-package-manager-google-interactive-media-ads-tvos.git";
+      requirement = {
+        kind = upToNextMajorVersion;
+        minimumVersion = 4.17.0;
+      };
+    };
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+    D85DABD992637EAFE8A9C699 /* GoogleInteractiveMediaAdsTvOS */ = {
+      isa = XCSwiftPackageProductDependency;
+      package = DFEA96270A561841C4FD7096 /* XCRemoteSwiftPackageReference "swift-package-manager-google-interactive-media-ads-tvos" */;
+      productName = GoogleInteractiveMediaAdsTvOS;
+    };
+/* End XCSwiftPackageProductDependency section */
   };
   rootObject = D29E2F852343D41E004ECBC9 /* Project object */;
 }

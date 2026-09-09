@@ -21,14 +21,11 @@ jobs:
         - "ObjectiveC/BasicExample"
         - "Swift/BasicExample"
     steps:
-      - name: Clone Repo
+      - name: Clone Repository
         uses: actions/checkout@v1
 
       - name: Xcode version
         run: /usr/bin/xcodebuild -version
-
-      - name: Pod repo update
-        run: pod repo update
 
       - name: Install xcpretty
         run: sudo gem install xcpretty
